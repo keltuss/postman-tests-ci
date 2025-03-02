@@ -1,0 +1,53 @@
+{
+	"info": {
+		"_postman_id": "e3a50943-5cd3-4fef-a851-7580b9db9b05",
+		"name": "petstore practice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31629914"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Answer has info about products\", function (){",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"available\");",
+							"    pm.expect(jsonData).to.have.property(\"pending\");",
+							"    pm.expect(jsonData).to.have.property(\"sold\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/store/inventory",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"store",
+						"inventory"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
